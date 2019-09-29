@@ -11,7 +11,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
   
   void setupNewsApiDataGathering() async {
     Topic newTopic = Topic(topic: 'Google');
-    newTopic.getNews();
+    await newTopic.getNews();
+    
   }
 
   @override
