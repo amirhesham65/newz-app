@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:newz_app/news.dart';
 import 'package:share/share.dart';
 
@@ -10,9 +11,10 @@ class SingleArticleView extends StatefulWidget {
 class _SingleArticleViewState extends State<SingleArticleView> {
   @override
   Widget build(BuildContext context) {
+    
     // Getting the article from the Article widget
     final Article article = ModalRoute.of(context).settings.arguments;
-
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(article.source),
@@ -21,8 +23,7 @@ class _SingleArticleViewState extends State<SingleArticleView> {
             padding: const EdgeInsets.fromLTRB(0, 0, 12.0, 0),
             child: IconButton(
               onPressed: () {
-                print("here");
-                Share.share('Check this article by "${article.author}" via "${article.source} at ${article.url}"');
+                Share.share('Check this article by "${article.author}" via "${article.source}" at ${article.url}"');
               },
               icon: Icon(Icons.share)
               ),
@@ -43,7 +44,7 @@ class _SingleArticleViewState extends State<SingleArticleView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Written by: ${article.author}',
+                    'Published at: ${DateFormat('h:m').format(article.publishedAt)}',
                     style: TextStyle(fontSize: 12.0, color: Colors.grey),
                   ),
                   SizedBox(height: 8.0),
@@ -55,7 +56,12 @@ class _SingleArticleViewState extends State<SingleArticleView> {
                   Text(
                     article.description,
                     style: TextStyle(fontSize: 14.0, color: Colors.grey[600]),
-                  )
+                  ),
+                  SizedBox(height: 8.0),
+                  Text(
+                    'Written by: ${article.author}',
+                    style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                  ),
                 ],
               ),
             )
