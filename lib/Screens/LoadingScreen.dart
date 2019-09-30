@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:newz_app/news.dart';
 
+// The LoadingScreen widget
 class LoadingScreen extends StatefulWidget {
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
 }
 
+// The LoadingScreen state
 class _LoadingScreenState extends State<LoadingScreen> {
   
+  // Getting all the news about a topic (HARD CODED TEMPORARLY)
   void setupNewsApiDataGathering() async {
-    Topic newTopic = Topic(topic: 'Google');
-    await newTopic.getNews();
-    
+    Topic newTopic = Topic(topic: 'Apple');
+    // Waiting to retrive the news
+    List<NewsPost> news = await newTopic.getNews();
+    // Pushing to the HomeScreen route with the data as arguments
+    Navigator.pushNamed(context, '/main', arguments: news.toList());
   }
 
   @override
