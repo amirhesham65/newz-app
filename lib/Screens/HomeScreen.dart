@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:newz_app/news.dart';
-import 'package:newz_app/newscard.dart';
+import 'package:newz_app/Article.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final List<NewsPost> myNews = ModalRoute.of(context).settings.arguments;
+    final List<Article> myNews = ModalRoute.of(context).settings.arguments;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
           child: ListView.builder(
             itemCount: myNews.length,
             itemBuilder: (context, index) {
-              return NewsCard(newsPost: myNews[index]);
+              return NewsCard(article: myNews[index]);
             },
           ),
         ),

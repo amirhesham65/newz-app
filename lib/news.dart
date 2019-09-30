@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 
 // A single News post definition
-class NewsPost {
+class Article {
   String source;
   String title;
   String description;
@@ -11,15 +11,15 @@ class NewsPost {
   String url;
   DateTime publishedAt;
   
-  // The NewsPost constructor to pass the data
-  NewsPost({ this.source, this.title, this.description, this.image, this.author, this.url, this.publishedAt});  
+  // The Article constructor to pass the data
+  Article({ this.source, this.title, this.description, this.image, this.author, this.url, this.publishedAt});  
 }
 
 // A news topic definition
 class Topic {
   String topic;
   String country;
-  List<NewsPost> news;
+  List<Article> news;
 
   Topic({ this.topic, this.country });
 
@@ -29,7 +29,7 @@ class Topic {
     Map<String, dynamic> data = jsonDecode(response.body);
     List articles = data['articles'];
     // Serialization
-    news = articles.map((article) => NewsPost(
+    news = articles.map((article) => Article(
       source: article['source']['name'],
       title: article['title'],
       description: article['description'],

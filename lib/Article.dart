@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:newz_app/news.dart';
 
 class NewsCard extends StatelessWidget {
-  final NewsPost newsPost;
+  final Article article;
 
-  NewsCard({this.newsPost});
+  NewsCard({ this.article });
 
   @override
   Widget build(BuildContext context) {
-    if (newsPost.title != null &&
-        newsPost.description != null &&
-        newsPost.author != null &&
-        newsPost.image != null &&
-        newsPost.source != null) {
+    if (article.title != null &&
+        article.description != null &&
+        article.author != null &&
+        article.image != null &&
+        article.source != null) {
       return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/article', arguments: newsPost);
+          Navigator.pushNamed(context, '/article', arguments: article);
         },
         child: Card(
           child: Padding(
@@ -25,7 +25,7 @@ class NewsCard extends StatelessWidget {
               children: <Widget>[
                 Center(
                   child: Image.network(
-                    newsPost.image,
+                    article.image,
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -36,17 +36,17 @@ class NewsCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        newsPost.source,
+                        article.source,
                         style: TextStyle(fontSize: 12.0, color: Colors.grey),
                       ),
                       SizedBox(height: 8.0),
                       Text(
-                        newsPost.title,
+                        article.title,
                         style: TextStyle(fontSize: 18.0),
                       ),
                       SizedBox(height: 8.0),
                       Text(
-                        newsPost.description,
+                        article.description,
                         style:
                             TextStyle(fontSize: 14.0, color: Colors.grey[600]),
                       )

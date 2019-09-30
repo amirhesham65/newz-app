@@ -9,7 +9,8 @@ class SingleArticleView extends StatefulWidget {
 class _SingleArticleViewState extends State<SingleArticleView> {
   @override
   Widget build(BuildContext context) {
-    final NewsPost article = ModalRoute.of(context).settings.arguments;
+    // Getting the article from the Article widget
+    final Article article = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
       appBar: AppBar(
