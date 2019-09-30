@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newz_app/Screens/HomeScreen.dart';
 import 'package:newz_app/Screens/LoadingScreen.dart';
+import 'package:newz_app/Screens/SingleArticle.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       // Routing controller
       routes: {
         '/': (context) => LoadingScreen(),
-        '/main': (context) => AppMainScreen()
+        '/main': (context) => AppMainScreen(),
+        '/article': (context) => SingleArticleView()
       },
     );
   }

@@ -13,7 +13,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   
   // Getting all the news about a topic (HARD CODED TEMPORARLY)
   void setupNewsApiDataGathering() async {
-    Topic newTopic = Topic(topic: 'Apple');
+    Topic newTopic = Topic(topic: 'Apple', country: 'us');
     // Waiting to retrive the news
     List<NewsPost> news = await newTopic.getNews();
     // Pushing to the HomeScreen route with the data as arguments
