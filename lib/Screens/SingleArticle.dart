@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newz_app/news.dart';
+import 'package:share/share.dart';
 
 class SingleArticleView extends StatefulWidget {
   @override
@@ -15,6 +16,19 @@ class _SingleArticleViewState extends State<SingleArticleView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(article.source),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 12.0, 0),
+            child: IconButton(
+              onPressed: () {
+                print("here");
+                Share.share('Check this article by "${article.author}" via "${article.source} at ${article.url}"');
+              },
+              icon: Icon(Icons.share)
+              ),
+          )
+        ],
+        
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
