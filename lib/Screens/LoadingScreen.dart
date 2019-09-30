@@ -23,6 +23,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
+    // Setting up the app by fetching the data from News API
     setupNewsApiDataGathering();
   }
 

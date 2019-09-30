@@ -8,6 +8,7 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Check if all the data is fetched
     if (article.title != null &&
         article.description != null &&
         article.author != null &&
@@ -15,6 +16,7 @@ class NewsCard extends StatelessWidget {
         article.source != null) {
       return GestureDetector(
         onTap: () {
+          // Go to the Article widget with all the data about the article
           Navigator.pushNamed(context, '/article', arguments: article);
         },
         child: Card(

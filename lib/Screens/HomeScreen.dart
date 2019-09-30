@@ -5,6 +5,7 @@ import 'package:newz_app/Article.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Accepting all the fetched news and articles
     final List<Article> myNews = ModalRoute.of(context).settings.arguments;
 
     return Column(
@@ -22,6 +23,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         Expanded(
+          // Building the whole ListView
           child: ListView.builder(
             itemCount: myNews.length,
             itemBuilder: (context, index) {
