@@ -18,13 +18,14 @@ class NewsPost {
 // A news topic definition
 class Topic {
   String topic;
+  String country;
   List<NewsPost> news;
 
-  Topic({ this.topic });
+  Topic({ this.topic, this.country });
 
   // Getting all the news related to the the topic
   Future<List> getNews() async {
-    Response response = await get('https://newsapi.org/v2/top-headlines?country=eg&apiKey=d3442b53f9d24711878e06f62a121f78');
+    Response response = await get('https://newsapi.org/v2/top-headlines?country=$country&apiKey=d3442b53f9d24711878e06f62a121f78');
     Map<String, dynamic> data = jsonDecode(response.body);
     List articles = data['articles'];
     // Serialization
