@@ -17,7 +17,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     // Waiting to retrive the news
     List<Article> news = await newTopic.getNews();
     // Pushing to the HomeScreen route with the data as arguments
-    Navigator.pushNamed(context, '/main', arguments: news.toList());
+    Navigator.pushReplacementNamed(context, '/main', arguments: news.toList());
   }
 
   @override
