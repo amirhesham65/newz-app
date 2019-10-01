@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:newz_app/Screens/HomeScreen.dart';
 import 'package:newz_app/Screens/LoadingScreen.dart';
+import 'package:newz_app/Screens/Settings/ChooseCountry.dart';
+import 'package:newz_app/Screens/Settings/Settings.dart';
 import 'package:newz_app/Screens/SingleArticle.dart';
 
 void main() => runApp(MyApp());
@@ -17,7 +19,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoadingScreen(),
         '/main': (context) => AppMainScreen(),
-        '/article': (context) => SingleArticleView()
+        '/article': (context) => SingleArticleView(),
+        '/settings/country': (context) => ChooseCountrySettings(),
       },
     );
   }
@@ -33,7 +36,7 @@ class AppMainScreen extends StatefulWidget {
 class _AppMainScreenState extends State<AppMainScreen> {
   int _selectedIndex = 0;
 
-  List<Widget> _views = [HomeScreen()];
+  List<Widget> _views = [HomeScreen(), Text("Search"), SettingsScreen()];
 
   void _onSwitch(int index) {
     setState(() {
