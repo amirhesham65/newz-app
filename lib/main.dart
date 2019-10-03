@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:newz_app/Screens/HomeScreen.dart';
 import 'package:newz_app/Screens/LoadingScreen.dart';
+import 'package:newz_app/Screens/SearchScreen.dart';
 import 'package:newz_app/Screens/Settings/ChooseCountry.dart';
 import 'package:newz_app/Screens/Settings/Settings.dart';
 import 'package:newz_app/Screens/SingleArticle.dart';
 
 void main() => runApp(MyApp());
 
-String apiKey = "d3442b53f9d24711878e06f62a121f78"; 
+String apiKey = "d3442b53f9d24711878e06f62a121f78";
 
 // The App root widget
 class MyApp extends StatelessWidget {
@@ -36,7 +37,11 @@ class AppMainScreen extends StatefulWidget {
 class _AppMainScreenState extends State<AppMainScreen> {
   int _selectedIndex = 0;
 
-  List<Widget> _views = [HomeScreen(), Text("Search"), SettingsScreen()];
+  List<Widget> _views = [
+    HomeScreen(),
+    SearchScreen(),
+    SettingsScreen(),
+  ];
 
   void _onSwitch(int index) {
     setState(() {

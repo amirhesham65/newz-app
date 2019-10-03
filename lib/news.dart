@@ -35,7 +35,32 @@ class Topic {
   Future<List> getNews() async {
     try {
       Response response = await get(
-          'https://newsapi.org/v2/top-headlines?country=$country&apiKey=d3442b53f9d24711878e06f62a121f78');
+        'https://newsapi.org/v2/top-headlines?country=$country&apiKey=d3442b53f9d24711878e06f62a121f78',
+      );
+      Map<String, dynamic> data = jsonDecode(response.body);
+      List articles = data['articles'];
+      // Serialization
+      news = articles
+          .map((article) => Article(
+              source: article['source']['name'],
+              title: article['title'],
+              description: article['description'],
+              author: article['author'],
+              image: article['urlToImage'],
+              url: article['url'],
+              publishedAt: DateTime.parse(article['publishedAt'])))
+          .toList();
+      return news;
+    } catch (error) {
+      throw "Error while connecting to the API";
+    }
+  }
+
+  Future<List> searchByTerm(String term) async {
+    try {
+      Response response = await get(
+        'https://newsapi.org/v2/everything?q=$term&sortBy=publishedAt&apiKey=d3442b53f9d24711878e06f62a121f78',
+      );
       Map<String, dynamic> data = jsonDecode(response.body);
       List articles = data['articles'];
       // Serialization
