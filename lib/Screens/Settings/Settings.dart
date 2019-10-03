@@ -9,7 +9,13 @@ class SettingsScreen extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Text('Settings'),
+            child: Text(
+            'Settings',
+            style: TextStyle(
+              color: Colors.grey[700],
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           ),
           Card(
             child: ListTile(

@@ -25,11 +25,10 @@ class Article {
 
 // A news topic definition
 class Topic {
-  String topic;
   String country;
   List<Article> news;
 
-  Topic({this.topic, this.country});
+  Topic({this.country});
 
   // Getting all the news related to the the topic
   Future<List> getNews() async {

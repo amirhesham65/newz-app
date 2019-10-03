@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:newz_app/Screens/HomeScreen.dart';
 import 'package:newz_app/Screens/LoadingScreen.dart';
 import 'package:newz_app/Screens/SearchScreen.dart';
+import 'package:newz_app/Screens/Settings/CategoriesScreen.dart';
+import 'package:newz_app/Screens/Settings/Category.dart';
 import 'package:newz_app/Screens/Settings/ChooseCountry.dart';
 import 'package:newz_app/Screens/Settings/Settings.dart';
 import 'package:newz_app/Screens/SingleArticle.dart';
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/main': (context) => AppMainScreen(),
         '/article': (context) => SingleArticleView(),
         '/settings/country': (context) => ChooseCountrySettings(),
+        '/category': (context) => Category()
       },
     );
   }
@@ -40,6 +43,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
   List<Widget> _views = [
     HomeScreen(),
     SearchScreen(),
+    CategoriesScreen(),
     SettingsScreen(),
   ];
 
@@ -69,12 +73,17 @@ class _AppMainScreenState extends State<AppMainScreen> {
             title: Text('Search'),
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            title: Text('Categories'),
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             title: Text('Settings'),
           )
         ],
         onTap: _onSwitch,
         currentIndex: _selectedIndex,
+        unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.blue[600],
       ),
     );

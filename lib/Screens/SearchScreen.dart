@@ -14,9 +14,17 @@ class _SearchScreenState extends State<SearchScreen> {
   bool showResults = true;
 
   // Searching for the news by term on changes
-  void searchOnChange(term) async {
+  void searchOnSubmit(term) async {
     List<Article> newsFetched = await newTopic.searchByTerm(term);
-    print(newsFetched);
+    if (newsFetched.length > 0) {
+      setState(() {
+        showResults = true;
+      });
+    } else {
+      setState(() {
+        showResults = false;
+      });
+    }
     setState(() {
       myNews = newsFetched;
     });
@@ -31,17 +39,8 @@ class _SearchScreenState extends State<SearchScreen> {
           child: TextField(
             autofocus: true,
             decoration: InputDecoration(hintText: 'Enter a search term'),
-            onChanged: (String text) {
-              searchOnChange(text);
-              if (text != null && myNews.length > 0) {
-                setState(() {
-                  showResults = true;
-                });
-              } else {
-                setState(() {
-                  showResults = false;
-                });
-              }
+            onSubmitted: (String text) {
+              searchOnSubmit(text);
             },
           ),
         ),

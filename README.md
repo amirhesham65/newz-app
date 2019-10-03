@@ -10,6 +10,4 @@ This project was intended to be created for learning purposes and to learn the D
 - Users can visit the article/source web page.
 - The country can be changed in the settings
 - Ability to search with a certain keyword
-
-## Upcoming Features
 - Users can browse news by Topic/Category
