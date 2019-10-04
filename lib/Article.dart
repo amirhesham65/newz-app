@@ -51,6 +51,19 @@ class NewsCard extends StatelessWidget {
                         article.description,
                         style:
                             TextStyle(fontSize: 14.0, color: Colors.grey[600]),
+                      ),
+                      SizedBox(height: 8.0),
+                      FlatButton(
+                        onPressed: () {},
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.bookmark_border),
+                            SizedBox(width: 4.0),
+                            Text("Save Article")
+                          ],
+                        ),
                       )
                     ],
                   ),
