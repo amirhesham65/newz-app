@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newz_app/Screens/HomeScreen.dart';
 import 'package:newz_app/Screens/LoadingScreen.dart';
+import 'package:newz_app/Screens/SavedArticles.dart';
 import 'package:newz_app/Screens/SearchScreen.dart';
 import 'package:newz_app/Screens/CategoriesScreen.dart';
 import 'package:newz_app/Screens/Category.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/article': (context) => SingleArticleView(),
         '/settings/country': (context) => ChooseCountrySettings(),
         '/category': (context) => Category(),
-        '/saved': (context) =>
+        '/saved': (context) => SavedArticles()
       },
     );
   }
@@ -60,6 +61,11 @@ class _AppMainScreenState extends State<AppMainScreen> {
       appBar: AppBar(
         title: Text('Newz'),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.collections_bookmark), onPressed: () {
+            Navigator.pushNamed(context, '/saved');
+          },)
+        ],
       ),
       body: Center(
         child: _views.elementAt(_selectedIndex),
