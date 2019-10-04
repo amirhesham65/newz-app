@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:newz_app/Screens/HomeScreen.dart';
 import 'package:newz_app/Screens/LoadingScreen.dart';
 import 'package:newz_app/Screens/SearchScreen.dart';
-import 'package:newz_app/Screens/Settings/CategoriesScreen.dart';
-import 'package:newz_app/Screens/Settings/Category.dart';
+import 'package:newz_app/Screens/CategoriesScreen.dart';
+import 'package:newz_app/Screens/Category.dart';
 import 'package:newz_app/Screens/Settings/ChooseCountry.dart';
 import 'package:newz_app/Screens/Settings/Settings.dart';
 import 'package:newz_app/Screens/SingleArticle.dart';
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
         '/main': (context) => AppMainScreen(),
         '/article': (context) => SingleArticleView(),
         '/settings/country': (context) => ChooseCountrySettings(),
-        '/category': (context) => Category()
+        '/category': (context) => Category(),
+        '/saved': (context) =>
       },
     );
   }
