@@ -58,6 +58,7 @@ class _AppMainScreenState extends State<AppMainScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Newz'),
+        centerTitle: true,
       ),
       body: Center(
         child: _views.elementAt(_selectedIndex),
