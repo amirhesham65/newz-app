@@ -8,8 +8,9 @@ import 'package:newz_app/Screens/Category.dart';
 import 'package:newz_app/Screens/Settings/ChooseCountry.dart';
 import 'package:newz_app/Screens/Settings/Settings.dart';
 import 'package:newz_app/Screens/SingleArticle.dart';
+import 'package:newz_app/state_container.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(StateContainer(child: MyApp(),));
 
 String apiKey = "d3442b53f9d24711878e06f62a121f78";
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newz_app/news.dart';
+import 'package:newz_app/state_container.dart';
 
 class NewsCard extends StatelessWidget {
   final Article article;
@@ -8,6 +9,7 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final container = StateContainer.of(context);
     // Check if all the data is fetched
     if (article.title != null &&
         article.description != null &&
@@ -54,7 +56,10 @@ class NewsCard extends StatelessWidget {
                       ),
                       SizedBox(height: 8.0),
                       FlatButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          container.addToArticles(article);
+                          print(container.articles);
+                        },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
