@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           child: ListView.builder(
             itemCount: myNews.length,
             itemBuilder: (context, index) {
-              return NewsCard(article: myNews[index]);
+              return NewsCard(article: myNews[index], key: UniqueKey(),);
             },
           ),
         ),

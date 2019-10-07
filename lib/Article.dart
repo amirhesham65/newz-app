@@ -2,24 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:newz_app/news.dart';
 import 'package:newz_app/state_container.dart';
 
-class NewsCard extends StatelessWidget {
+class NewsCard extends StatefulWidget {
   final Article article;
+  
+  NewsCard({Key key, this.article}) : super(key: key);
 
-  NewsCard({ this.article });
+  @override
+  _NewsCardState createState() => _NewsCardState();
+}
+
+class _NewsCardState extends State<NewsCard> {
+  bool isSaved = false;
 
   @override
   Widget build(BuildContext context) {
     final container = StateContainer.of(context);
+    if (container.checkIfSaved(widget.article)) {
+      setState(() {
+        isSaved = true;
+      });
+    }
     // Check if all the data is fetched
-    if (article.title != null &&
-        article.description != null &&
-        article.author != null &&
-        article.image != null &&
-        article.source != null) {
+    if (widget.article.title != null &&
+        widget.article.description != null &&
+        widget.article.author != null &&
+        widget.article.image != null &&
+        widget.article.source != null) {
       return GestureDetector(
         onTap: () {
           // Go to the Article widget with all the data about the article
-          Navigator.pushNamed(context, '/article', arguments: article);
+          Navigator.pushNamed(context, '/article', arguments: widget.article);
         },
         child: Card(
           child: Padding(
@@ -29,7 +41,7 @@ class NewsCard extends StatelessWidget {
               children: <Widget>[
                 Center(
                   child: Image.network(
-                    article.image,
+                    widget.article.image,
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -40,31 +52,42 @@ class NewsCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        article.source,
+                        widget.article.source,
                         style: TextStyle(fontSize: 12.0, color: Colors.grey),
                       ),
                       SizedBox(height: 8.0),
                       Text(
-                        article.title,
+                        widget.article.title,
                         style: TextStyle(fontSize: 18.0),
                       ),
                       SizedBox(height: 8.0),
                       Text(
-                        article.description,
+                        widget.article.description,
                         style:
                             TextStyle(fontSize: 14.0, color: Colors.grey[600]),
                       ),
                       SizedBox(height: 8.0),
                       FlatButton(
                         onPressed: () {
-                          container.addToArticles(article);
-                          print(container.articles);
+                          if (!isSaved) {
+                            container.addToArticles(widget.article);
+                            setState(() {
+                              isSaved = true;
+                            });
+                          }else {
+                            container.removeFromArticles(widget.article);
+                            setState(() {
+                              isSaved = false;
+                            });
+                          }
                         },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.bookmark_border),
+                            Icon((isSaved)
+                                ? Icons.bookmark
+                                : Icons.bookmark_border),
                             SizedBox(width: 4.0),
                             Text("Save Article")
                           ],

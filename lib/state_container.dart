@@ -33,6 +33,14 @@ class StateContainerState extends State<StateContainer> {
     articles.add(article);
   }
 
+  void removeFromArticles(Article article) {
+    articles.remove(article);
+  }
+
+  bool checkIfSaved(Article article) {
+    return articles.contains(article);
+  }
+
   @override 
   Widget build(BuildContext context) {
     return _InheritedStateContainer(
