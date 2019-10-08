@@ -11,3 +11,4 @@ This project was intended to be created for learning purposes and to learn the D
 - The country can be changed in the settings
 - Ability to search with a certain keyword
 - Users can browse news by Topic/Category
+- Users can save articles to read later
